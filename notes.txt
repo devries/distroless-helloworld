@@ -1,0 +1,21 @@
+# Distroless w/ docker:
+docker build -t distroless-helloworld .
+
+# Use Google Builtpack
+pack build google-buildpack-helloworld --builder gcr.io/buildpacks/builder:v1
+
+# User paketo tiny buildpack
+pack build paketo-tiny-helloworld -p . --builder gcr.io/paketo-buildpacks/builder:tiny
+
+# Heroku buildpack
+pack build heroku-helloworld --builder heroku/buildpacks
+
+# Alpine w/ Docker
+docker build -t alpine-helloworld -f Dockerfile.alpine .
+
+# REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
+# distroless-helloworld                  latest              c7c16c20393d        17 hours ago        8.2MB
+# paketo-tiny-helloworld                 latest              c8a2af9f2f6a        40 years ago        28.9MB
+# google-buildpack-helloworld            latest              b07c1de04ad0        40 years ago        120MB
+# heroku-helloworld                      latest              a54685f203ac        40 years ago        524MB
+# alpine-helloworld                      latest              c1e6803b830b        24 seconds ago      12.5MB
